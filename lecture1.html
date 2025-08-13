@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 1 – Variables & Data Types</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+// Login check
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+}
+
+// Lecture number (change per page)
+let lectureNumber = 1; // <-- इस पेज के हिसाब से बदलो
+
+// Unlock previous requirement
+let progress = parseInt(localStorage.getItem("progress") || "0");
+if(lectureNumber > progress + 1){
+    alert("Please complete previous lectures first.");
+    window.location.href = "index.html";
+}
+
+// Mark as complete
+function markComplete(){
+    if(progress < lectureNumber){
+        localStorage.setItem("progress", lectureNumber);
+    }
+    window.location.href = "index.html";
+}
+</script>
+
+
+    <!-- Navigation -->
+<div class="nav-buttons">
+  <a href="index.html" class="btn">← Index</a>
+  <a href="lecture2.html" class="btn">Next→</a>
+</div>
+<h2>Lecture 1 – Variables & Data Types</h2>
+
+<div class="container">
+  <div class="row">
+    <!-- var / let / const -->
+    <table>
+      <tr><th>Keyword</th><th>Scope</th><th>Redeclare</th><th>Reassign</th><th>Hoisting</th></tr>
+      <tr><td>var</td><td>Function</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>let</td><td>Block</td><td>No</td><td>Yes</td><td>TDZ</td></tr>
+      <tr><td>const</td><td>Block</td><td>No</td><td>No</td><td>TDZ</td></tr>
+    </table>
+
+    <!-- Data Types -->
+    <table>
+      <tr><th>Primitive</th><th>Example</th><th>typeof</th></tr>
+      <tr><td>Number</td><td>42</td><td>number</td></tr>
+      <tr><td>String</td><td>"hello"</td><td>string</td></tr>
+      <tr><td>Boolean</td><td>true</td><td>boolean</td></tr>
+      <tr><td>Undefined</td><td>let x;</td><td>undefined</td></tr>
+      <tr><td>Null</td><td>null</td><td>object*</td></tr>
+      <tr><td>Symbol</td><td>Symbol('id')</td><td>symbol</td></tr>
+      <tr><td>BigInt</td><td>123n</td><td>bigint</td></tr>
+    </table>
+
+    <table>
+      <tr><th>Reference (Non‑Primitive)</th><th>Example</th></tr>
+      <tr><td>Object</td><td>{ name: "Aman", age: 20 }</td></tr>
+      <tr><td>Array</td><td>[1,2,3]</td></tr>
+      <tr><td>Function</td><td>function f() {}</td></tr>
+    </table>
+  </div>
+
+  <h3>Example Code</h3>
+  <pre>
+let myName = "Aman";
+let myAge = 20;
+const pi = 3.14;
+console.log(typeof myName, typeof myAge, typeof pi); // string number number
+  </pre>
+
+  <h3>Relevant Docs</h3>
+  <ul class="docs">
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">let</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">Data types</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">typeof</a></li>
+  </ul>
+
+</div>
+
+
+</body>
+</html>

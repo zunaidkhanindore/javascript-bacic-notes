@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 3 – Conditional Statements</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+// Login check
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+}
+
+// Lecture number (change per page)
+let lectureNumber = 1; // <-- इस पेज के हिसाब से बदलो
+
+// Unlock previous requirement
+let progress = parseInt(localStorage.getItem("progress") || "0");
+if(lectureNumber > progress + 1){
+    alert("Please complete previous lectures first.");
+    window.location.href = "index.html";
+}
+
+// Mark as complete
+function markComplete(){
+    if(progress < lectureNumber){
+        localStorage.setItem("progress", lectureNumber);
+    }
+    window.location.href = "index.html";
+}
+</script>
+
+<!-- Navigation -->
+<div class="nav-buttons">
+  <a href="lecture2.html" class="btn">← Previous</a>
+  <a href="lecture4.html" class="btn">Next→</a>
+</div>
+<h2>Lecture 3 – Conditional Statements (if / else if / else / switch)</h2>
+
+<div class="container">
+  <div class="row">
+    <table>
+      <tr><th>Pattern</th><th>Use Case</th></tr>
+      <tr><td><code>if (cond) { ... }</code></td><td>Single check</td></tr>
+      <tr><td><code>if ... else</code></td><td>Two outcomes</td></tr>
+      <tr><td><code>if ... else if ... else</code></td><td>Ranges / multiple checks</td></tr>
+      <tr><td><code>switch (x) { case ... }</code></td><td>Discrete values</td></tr>
+    </table>
+
+    <table>
+      <tr><th>Common Pitfalls</th></tr>
+      <tr><td>Loose equality (==) के बजाय strict (===) use करो</td></tr>
+      <tr><td><code>switch</code> में <code>break</code> भूलना → fallthrough</td></tr>
+      <tr><td>Nested if को small functions में तोड़ो</td></tr>
+    </table>
+  </div>
+
+  <h3>Examples</h3>
+  <pre>
+// Grading
+const marks = 82;
+if (marks >= 90) console.log("A");
+else if (marks >= 75) console.log("B");
+else console.log("C");
+
+// Switch day
+const day = 2;
+switch (day) {
+  case 1: console.log("Mon"); break;
+  case 2: console.log("Tue"); break;
+  default: console.log("Other");
+}
+  </pre>
+
+  <h3>Relevant Docs</h3>
+  <ul class="docs">
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else">if...else</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch">switch</a></li>
+  </ul>
+</body>
+</html>

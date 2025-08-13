@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lecture 8 – Objects in JavaScript</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="nav-buttons">
+  <a class="btn" href="lecture7.html">⬅ Previous</a>
+  <a class="btn" href="lecture9.html">Next ➡</a>
+</div>
+<h1>Lecture 8 – Objects in JavaScript</h1>
+
+<h2>Transcript Summary</h2>
+<ul>
+  <li>Objects key–value pairs का collection हैं; keys string/symbol होती हैं।</li>
+  <li>Shorthand properties, computed keys, methods commonly use होते हैं।</li>
+  <li>Deep copy vs shallow copy का difference समझो।</li>
+</ul>
+
+<h2>Create & Access</h2>
+<pre>
+// Literal + shorthand + computed key
+const name = "Aman";
+const key = "score";
+const user = {
+  name,
+  age: 20,
+  greet() { return `Hi, ${this.name}`; },
+  [key]: 95
+};
+
+console.log(user.name, user[key], user.greet());
+console.log("city" in user); // false
+</pre>
+
+<h2>Copy / Merge</h2>
+<table>
+  <tr><th>Operation</th><th>Code</th><th>Type</th></tr>
+  <tr><td>Shallow copy</td><td><code>const c = {...user}</code></td><td>Top-level only</td></tr>
+  <tr><td>Merge</td><td><code>const m = Object.assign({}, a, b)</code></td><td>Overwrites right→left</td></tr>
+  <tr><td>Deep copy</td><td><code>structuredClone(obj)</code></td><td>Most types</td></tr>
+</table>
+
+<h2>Descriptors & Freeze</h2>
+<pre>
+const obj = {x: 1};
+Object.defineProperty(obj, "x", { writable:false });
+Object.freeze(obj); // no add/change/delete
+</pre>
+
+<h3>Relevant Docs</h3>
+<ul class="docs">
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">Spread (...) operator</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/structuredClone">structuredClone</a></li>
+</ul>
+
+
+
+
+</body>
+</html>

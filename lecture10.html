@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lecture 10 – Events in JavaScript</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="nav-buttons">
+  <a class="btn" href="lecture9.html">⬅ Previous</a>
+  <a class="btn" href="lecture11.html">Next ➡</a>
+</div>
+<h1>Lecture 10 – Events in JavaScript</h1>
+
+<h2>Transcript Summary</h2>
+<ul>
+  <li>Events user या browser actions हैं (click, input, submit, load, keydown...).</li>
+  <li>Handler attach: <code>addEventListener(type, listener, options)</code>.</li>
+  <li>Event bubbling vs capturing; delegation performance-friendly है।</li>
+</ul>
+
+<h2>Basic Handlers</h2>
+<pre>
+// HTML: <button id="btn">Click</button>
+const btn = document.getElementById("btn");
+btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  alert("Clicked!");
+});
+</pre>
+
+<h2>Event Delegation</h2>
+<pre>
+// HTML: <ul id="todos"> <li>Buy</li> <li>Code</li> </ul>
+const ul = document.getElementById("todos");
+ul.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    e.target.classList.toggle("done");
+  }
+});
+</pre>
+
+<h2>Bubbling vs Capturing</h2>
+<table>
+  <tr><th>Phase</th><th>Order</th><th>Notes</th></tr>
+  <tr><td>Capturing</td><td>Window → target</td><td>Use <code>{ capture: true }</code></td></tr>
+  <tr><td>Target</td><td>On element</td><td>Listener runs on target</td></tr>
+  <tr><td>Bubbling</td><td>Target → window</td><td>Default phase</td></tr>
+</table>
+
+<h3>Relevant Docs</h3>
+<ul class="docs">
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Event">Event</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">addEventListener</a></li>
+</ul>
+</body>
+</html>

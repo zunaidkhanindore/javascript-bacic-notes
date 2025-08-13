@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lecture 11 – ES6+ Features</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="nav-buttons">
+  <a class="btn" href="lecture10.html">⬅ Previous</a>
+  <a class="btn" href="lecture12.html">Next ➡</a>
+</div>
+
+<h1>Lecture 11 – ES6+ Features</h1>
+
+<h2>Transcript Summary</h2>
+<ul>
+  <li><code>let</code>/<code>const</code>, template literals, destructuring, spread/rest.</li>
+  <li>Modules (<code>import/export</code>), classes, Maps/Sets.</li>
+  <li>Optional chaining, nullish coalescing, logical assignment.</li>
+</ul>
+
+<h2>Highlights</h2>
+<pre>
+// Destructuring + default + renaming
+const user = { name: "Aman", city: "Delhi" };
+const { name: fullName, city = "NA" } = user;
+
+// Spread / Rest
+const a = [1,2], b = [3,4];
+const all = [...a, ...b];
+function sum(...nums){ return nums.reduce((x,y)=>x+y,0); }
+
+// Template strings
+console.log(`Hello, ${fullName} from ${city}`);
+
+// Optional chaining + nullish coalescing
+const profile = { social: null };
+const twitter = profile.social?.twitter ?? "not set";
+</pre>
+
+<h2>Map / Set</h2>
+<table>
+  <tr><th>Type</th><th>Best For</th><th>Snippet</th></tr>
+  <tr><td>Map</td><td>Key→value with any key type</td><td><code>const m = new Map([[1,'a']]);</code></td></tr>
+  <tr><td>Set</td><td>Unique values</td><td><code>const s = new Set([1,1,2]);</code></td></tr>
+</table>
+
+<h3>Relevant Docs</h3>
+<ul class="docs">
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">Modules</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining">Optional chaining</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator">Nullish coalescing</a></li>
+</ul>
+
+
+
+</body>
+</html>

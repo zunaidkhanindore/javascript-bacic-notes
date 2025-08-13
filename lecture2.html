@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Operators</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+// Login check
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+}
+
+// Lecture number (change per page)
+let lectureNumber = 1; // <-- इस पेज के हिसाब से बदलो
+
+// Unlock previous requirement
+let progress = parseInt(localStorage.getItem("progress") || "0");
+if(lectureNumber > progress + 1){
+    alert("Please complete previous lectures first.");
+    window.location.href = "index.html";
+}
+
+// Mark as complete
+function markComplete(){
+    if(progress < lectureNumber){
+        localStorage.setItem("progress", lectureNumber);
+    }
+    window.location.href = "index.html";
+}
+</script>
+<!-- Navigation -->
+<div class="nav-buttons">
+  <a href="lecture1.html" class="btn">← Previous</a>
+  <a href="lecture3.html" class="btn">Next→</a>
+</div>
+
+<h2>Lecture 2 – JavaScript Operators</h2>
+
+<div class="operator-section">
+  <!-- Arithmetic Operators -->
+  <table>
+    <tr><th>Operator</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td>+</td><td>Addition</td><td>5 + 2 = 7</td></tr>
+    <tr><td>-</td><td>Subtraction</td><td>5 - 2 = 3</td></tr>
+    <tr><td>*</td><td>Multiplication</td><td>5 * 2 = 10</td></tr>
+    <tr><td>/</td><td>Division</td><td>5 / 2 = 2.5</td></tr>
+    <tr><td>%</td><td>Modulus</td><td>5 % 2 = 1</td></tr>
+    <tr><td>**</td><td>Exponentiation</td><td>5 ** 2 = 25</td></tr>
+    <tr><td>++</td><td>Increment</td><td>a++</td></tr>
+    <tr><td>--</td><td>Decrement</td><td>a--</td></tr>
+  </table>
+
+  <!-- Assignment Operators -->
+  <table>
+    <tr><th>Operator</th><th>Example</th><th>Meaning</th></tr>
+    <tr><td>=</td><td>x = 5</td><td>Assign 5 to x</td></tr>
+    <tr><td>+=</td><td>x += 2</td><td>x = x + 2</td></tr>
+    <tr><td>-=</td><td>x -= 2</td><td>x = x - 2</td></tr>
+    <tr><td>*=</td><td>x *= 2</td><td>x = x * 2</td></tr>
+    <tr><td>/=</td><td>x /= 2</td><td>x = x / 2</td></tr>
+    <tr><td>%=</td><td>x %= 2</td><td>x = x % 2</td></tr>
+  </table>
+
+  <!-- Comparison Operators -->
+  <table>
+    <tr><th>Operator</th><th>Example</th><th>Result</th></tr>
+    <tr><td>==</td><td>5 == "5"</td><td>true</td></tr>
+    <tr><td>===</td><td>5 === "5"</td><td>false</td></tr>
+    <tr><td>!=</td><td>5 != "5"</td><td>false</td></tr>
+    <tr><td>!==</td><td>5 !== "5"</td><td>true</td></tr>
+    <tr><td>&gt;</td><td>5 &gt; 2</td><td>true</td></tr>
+    <tr><td>&lt;</td><td>5 &lt; 2</td><td>false</td></tr>
+    <tr><td>&gt;=</td><td>5 &gt;= 5</td><td>true</td></tr>
+    <tr><td>&lt;=</td><td>5 &lt;= 2</td><td>false</td></tr>
+  </table>
+
+  <!-- Logical Operators -->
+  <table>
+    <tr><th>Operator</th><th>Example</th><th>Result</th></tr>
+    <tr><td>&amp;&amp;</td><td>true && false</td><td>false</td></tr>
+    <tr><td>||</td><td>true || false</td><td>true</td></tr>
+    <tr><td>!</td><td>!true</td><td>false</td></tr>
+  </table>
+</div>
+
+<!-- Unary Operators -->
+<h3>Unary Operators</h3>
+<ul>
+  <li><b>++</b> → Increment</li>
+  <li><b>--</b> → Decrement</li>
+  <li><b>typeof</b> → Data type check</li>
+  <li><b>delete</b> → Delete object property</li>
+</ul>
+
+<!-- Ternary Operator -->
+<h3>Ternary Operator</h3>
+<pre>
+let age = 18;
+let result = (age >= 18) ? "Adult" : "Minor";
+console.log(result);
+</pre>
+
+
+
+</body>
+</html>

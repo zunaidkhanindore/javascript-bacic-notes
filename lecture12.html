@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lecture 12 – Async JavaScript (Promises, fetch, async/await)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="nav-buttons">
+  <a class="btn" href="lecture11.html">⬅ Previous</a>
+  <a class="btn" href="index.html">Finish</a>
+</div>
+
+<h1>Lecture 12 – Async JavaScript (Promises, fetch, async/await)</h1>
+
+<h2>Transcript Summary</h2>
+<ul>
+  <li>JS single-threaded है; async tasks Promise-based APIs से handle होते हैं।</li>
+  <li>Promise states: pending → fulfilled/rejected.</li>
+  <li><code>fetch</code> network requests के लिए; <code>async/await</code> syntax sugar on Promises.</li>
+  <li>Error handling: <code>.catch</code> या <code>try...catch</code>.</li>
+</ul>
+
+<h2>Promise Basics</h2>
+<pre>
+const p = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("done"), 500);
+});
+p.then(v => console.log(v)).catch(err => console.error(err));
+</pre>
+
+<h2>fetch + async/await</h2>
+<pre>
+async function loadUsers() {
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    if (!res.ok) throw new Error("Network error: " + res.status);
+    const data = await res.json();
+    console.log("Users:", data.map(u => u.name));
+  } catch (err) {
+    console.error("Failed:", err.message);
+  } finally {
+    console.log("Always runs");
+  }
+}
+loadUsers();
+</pre>
+
+<h2>Parallel vs Sequential</h2>
+<table>
+  <tr><th>Pattern</th><th>Snippet</th><th>Use When</th></tr>
+  <tr>
+    <td>Parallel</td>
+    <td><code>const [a,b] = await Promise.all([fa(), fb()])</code></td>
+    <td>Independent tasks</td>
+  </tr>
+  <tr>
+    <td>Sequential</td>
+    <td><code>const a = await fa(); const b = await fb(a);</code></td>
+    <td>Dependent tasks</td>
+  </tr>
+</table>
+
+<h3>Relevant Docs</h3>
+<ul class="docs">
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/fetch">fetch</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async function</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">Using promises</a></li>
+</ul>
+
+
+
+</body>
+</html>

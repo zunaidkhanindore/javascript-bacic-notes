@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lecture 7 – Functions in JavaScript</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="nav-buttons">
+  <a class="btn" href="lecture6.html">⬅ Previous</a>
+  <a class="btn" href="lecture8.html">Next ➡</a>
+</div>
+
+<h1>Lecture 7 – Functions in JavaScript</h1>
+
+<h2>Transcript Summary</h2>
+<ul>
+  <li>Functions reusable code blocks हैं; call करने पर चलते हैं।</li>
+  <li>Parameters input लेते हैं; <code>return</code> output देता है।</li>
+  <li>Types: Declaration, Expression, Arrow, IIFE.</li>
+  <li>Default parameters, rest parameters (...args) help करते हैं flexible APIs बनाने में।</li>
+</ul>
+
+<h2>Function Forms</h2>
+<table>
+  <tr><th>Form</th><th>Syntax</th><th>Notes</th></tr>
+  <tr><td>Declaration</td><td><code>function sum(a,b){ return a+b; }</code></td><td>Hoisted</td></tr>
+  <tr><td>Expression</td><td><code>const sum = function(a,b){...}</code></td><td>Not hoisted (binding only)</td></tr>
+  <tr><td>Arrow</td><td><code>const sum = (a,b) => a+b;</code></td><td>Lexical <code>this</code></td></tr>
+  <tr><td>IIFE</td><td><code>(function(){ ... })();</code></td><td>One‑off scope</td></tr>
+</table>
+
+<h2>Examples</h2>
+<pre>
+// Declaration
+function greet(name = "User") {
+  return `Hello, ${name}`;
+}
+console.log(greet("Aman"));
+
+// Expression + Callback
+const twice = function (fn, x) {
+  return fn(fn(x));
+};
+const inc = n => n + 1;
+console.log(twice(inc, 3)); // 5
+
+// Arrow + Rest
+const average = (...nums) =>
+  nums.reduce((a, b) => a + b, 0) / nums.length;
+console.log(average(10, 20, 30)); // 20
+</pre>
+
+<h2>this Binding (Arrow vs Regular)</h2>
+<pre>
+const counter = {
+  val: 0,
+  inc() { this.val++; },
+  incLater() {
+    setTimeout(() => { // arrow -> lexical this
+      this.val++;
+      console.log("val:", this.val);
+    }, 0);
+  }
+};
+counter.inc();
+counter.incLater();
+</pre>
+
+<h3>Relevant Docs</h3>
+<ul class="docs">
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions">Function</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow functions</a></li>
+  <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">Rest parameters</a></li>
+</ul>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 4 – Loops</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+// Login check
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+}
+
+// Lecture number (change per page)
+let lectureNumber = 1; // <-- इस पेज के हिसाब से बदलो
+
+// Unlock previous requirement
+let progress = parseInt(localStorage.getItem("progress") || "0");
+if(lectureNumber > progress + 1){
+    alert("Please complete previous lectures first.");
+    window.location.href = "index.html";
+}
+
+// Mark as complete
+function markComplete(){
+    if(progress < lectureNumber){
+        localStorage.setItem("progress", lectureNumber);
+    }
+    window.location.href = "index.html";
+}
+</script>
+<!-- Navigation -->
+<div class="nav-buttons">
+  <a href="lecture3.html" class="btn">← Previous</a>
+  <a href="lecture5.html" class="btn">Next →</a>
+</div>
+<h2>Lecture 4 – Loops (for, while, do...while, for...of, for...in)</h2>
+
+<div class="container">
+  <div class="row">
+    <table>
+      <tr><th>Loop</th><th>Best For</th><th>Example</th></tr>
+      <tr><td>for</td><td>Index based</td><td><code>for (let i=0; i&lt;n; i++)</code></td></tr>
+      <tr><td>while</td><td>Unknown iterations</td><td><code>while (cond) {...}</code></td></tr>
+      <tr><td>do...while</td><td>Run at least once</td><td><code>do {...} while (cond)</code></td></tr>
+      <tr><td>for...of</td><td>Iterables</td><td><code>for (const v of arr)</code></td></tr>
+      <tr><td>for...in</td><td>Object keys</td><td><code>for (const k in obj)</code></td></tr>
+    </table>
+
+    <table>
+      <tr><th>Tips</th></tr>
+      <tr><td>Arrays पर <code>for...in</code> avoid; order unpredictable हो सकता है</td></tr>
+      <tr><td>Array methods (<code>map</code>, <code>filter</code>, <code>reduce</code>) readability बढ़ाते हैं</td></tr>
+    </table>
+  </div>
+
+  <h3>Examples</h3>
+  <pre>
+const arr = [10,20,30];
+for (const v of arr) console.log(v);
+
+const user = { name: "Aman", age: 20 };
+for (const k in user) console.log(k, user[k]);
+
+let i = 0;
+while (i < 3) { console.log(i); i++; }
+  </pre>
+
+  <h3>Relevant Docs</h3>
+  <ul class="docs">
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for">for</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while">while</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of">for...of</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">for...in</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></li>
+  </ul>
+
+ 
+
+</body>
+</html>

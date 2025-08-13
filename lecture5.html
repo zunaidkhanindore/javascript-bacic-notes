@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lecture 5 – Strings & Methods</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <script>
+// Login check
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+}
+
+// Lecture number (change per page)
+let lectureNumber = 1; // <-- इस पेज के हिसाब से बदलो
+
+// Unlock previous requirement
+let progress = parseInt(localStorage.getItem("progress") || "0");
+if(lectureNumber > progress + 1){
+    alert("Please complete previous lectures first.");
+    window.location.href = "index.html";
+}
+
+// Mark as complete
+function markComplete(){
+    if(progress < lectureNumber){
+        localStorage.setItem("progress", lectureNumber);
+    }
+    window.location.href = "index.html";
+}
+</script>
+<!-- Navigation -->
+<div class="nav-buttons">
+  <a href="lecture4.html" class="btn">← Previous</a>
+  <a href="lecture6.html" class="btn">Next→</a>
+</div>
+
+<h2>Lecture 5 – Strings & String Methods</h2>
+
+<div class="container">
+  <div class="row">
+    <table>
+      <tr><th>Method</th><th>Usage</th><th>Example</th></tr>
+      <tr><td><code>length</code></td><td>String size</td><td><code>"hello".length → 5</code></td></tr>
+      <tr><td><code>toUpperCase()</code></td><td>Upper</td><td><code>"hi".toUpperCase()</code></td></tr>
+      <tr><td><code>toLowerCase()</code></td><td>Lower</td><td><code>"HI".toLowerCase()</code></td></tr>
+      <tr><td><code>includes()</code></td><td>Substring check</td><td><code>"abc".includes("b")</code></td></tr>
+      <tr><td><code>indexOf()</code></td><td>First index</td><td><code>"ababa".indexOf("ba")</code></td></tr>
+      <tr><td><code>slice()</code></td><td>Substring</td><td><code>"hello".slice(1,4)</code></td></tr>
+      <tr><td><code>trim()</code></td><td>Edges whitespace</td><td><code>" hi ".trim()</code></td></tr>
+      <tr><td><code>replace()</code></td><td>Replace first match</td><td><code>"a-b".replace("-", "_")</code></td></tr>
+      <tr><td><code>split()</code></td><td>To array</td><td><code>"a,b".split(",")</code></td></tr>
+    </table>
+
+    <table>
+      <tr><th>Notes</th></tr>
+      <tr><td>Strings are <b>immutable</b>; methods new string लौटाते हैं</td></tr>
+      <tr><td>Template literals backticks (<code>`</code>) use करते हैं</td></tr>
+    </table>
+  </div>
+
+  <h3>Examples</h3>
+  <pre>
+const name = "Aman";
+console.log(`Hello, ${name}!`);   // template literal
+
+const msg = "  hi JS  ";
+console.log(msg.trim().toUpperCase()); // "HI JS"
+  </pre>
+
+  <h3>Relevant Docs</h3>
+  <ul class="docs">
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">Template literals</a></li>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">String.replace</a></li>
+  </ul>
+
+ 
+</div>
+
+
+</body>
+</html>

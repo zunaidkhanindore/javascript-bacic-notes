@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecture 6 – Arrays in JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="nav-buttons">
+    <a class="btn" href="lecture5.html">⬅ Previous</a>
+    <a class="btn" href="lecture7.html">Next ➡</a>
+</div>
+
+<h1>Lecture 6 – Arrays in JavaScript</h1>
+
+<h2>Introduction</h2>
+<ul>
+    <li>Array एक ordered collection होता है जिसमें multiple values store की जा सकती हैं।</li>
+    <li>Arrays में elements का index 0 से शुरू होता है।</li>
+    <li>JavaScript arrays में किसी भी data type के elements हो सकते हैं।</li>
+</ul>
+
+<h2>Creating Arrays</h2>
+<pre>
+// Using array literal
+let fruits = ["Apple", "Banana", "Mango"];
+
+// Using new Array()
+let numbers = new Array(1, 2, 3, 4);
+</pre>
+
+<h2>Accessing Array Elements</h2>
+<table>
+    <tr><th>Code</th><th>Output</th></tr>
+    <tr><td>fruits[0]</td><td>Apple</td></tr>
+    <tr><td>fruits[1]</td><td>Banana</td></tr>
+    <tr><td>fruits[2]</td><td>Mango</td></tr>
+</table>
+
+<h2>Array Methods</h2>
+<table>
+    <tr><th>Method</th><th>Description</th><th>Example</th></tr>
+    <tr><td>push()</td><td>Adds element at the end</td><td>fruits.push("Orange")</td></tr>
+    <tr><td>pop()</td><td>Removes last element</td><td>fruits.pop()</td></tr>
+    <tr><td>shift()</td><td>Removes first element</td><td>fruits.shift()</td></tr>
+    <tr><td>unshift()</td><td>Adds element at start</td><td>fruits.unshift("Papaya")</td></tr>
+    <tr><td>includes()</td><td>Checks if element exists</td><td>fruits.includes("Apple")</td></tr>
+    <tr><td>indexOf()</td><td>Returns index of element</td><td>fruits.indexOf("Mango")</td></tr>
+    <tr><td>join()</td><td>Joins array into string</td><td>fruits.join(", ")</td></tr>
+</table>
+
+<h2>Looping through Arrays</h2>
+<pre>
+// Using for loop
+for(let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+}
+
+// Using for...of
+for(let fruit of fruits) {
+    console.log(fruit);
+}
+</pre>
+
+<h2>Transcript Summary</h2>
+<ul>
+    <li>Arrays को store और manage करने के लिए use किया जाता है।</li>
+    <li>Indexing 0 से start होती है।</li>
+    <li>JavaScript arrays dynamic होते हैं — size auto adjust होता है।</li>
+    <li>Built-in methods arrays को modify और manipulate करने में help करते हैं।</li>
+</ul>
+
+
+
+</body>
+</html>
